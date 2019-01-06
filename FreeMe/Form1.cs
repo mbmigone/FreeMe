@@ -8,8 +8,8 @@ namespace FreeMe
     
     public partial class Form1 : Form
     {
-        string ajá = "Así que decidiste crackerme? No me veas! D:" +
-            "Bueno, si llegaste hasta aquí el código fuente está en github" +
+        string ajá = "Así que decidiste crackerme? No me veas! D: " +
+            "Bueno, si llegaste hasta aquí el código fuente está en github " +
             "https://github.com/mbmigone/FreeMe";
         
         //variables de control de flujo. Que los popup se ejecuten una sola vez.
