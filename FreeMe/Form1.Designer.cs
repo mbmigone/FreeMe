@@ -113,7 +113,7 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Help;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(239, 266);
+            this.button1.Location = new System.Drawing.Point(239, 264);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(10, 10);
             this.button1.TabIndex = 4;
