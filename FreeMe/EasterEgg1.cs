@@ -67,8 +67,8 @@ namespace FreeMe
 
             if (counter == 22)
             {
-                MessageBox.Show("Viste, lo espantaste. Gracias ¬¬", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.None);
                 Close();
+                MessageBox.Show("Viste, lo espantaste. Gracias ¬¬", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.None);
                 MessageBox.Show("t(°-°t)", "Forro!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
 
