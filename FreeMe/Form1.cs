@@ -16,6 +16,7 @@ namespace FreeMe
         //variables de control de flujo. Que los popup se ejecuten una sola vez.
         bool executed1, executed2, executed3, executed4, executed5;
         bool disable;
+        int egcount;
 
         // ruta del registro para iniciar con el arranque del sistema.
         RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
@@ -110,7 +111,20 @@ namespace FreeMe
         private void button1_Click(object sender, EventArgs e)
         {
             EasterEgg1 eg = new EasterEgg1();
-            eg.Show();
+            egcount++;
+            if (egcount < 5)
+            {
+                eg.Show();
+            }
+            else if(egcount >= 5)
+            {
+                if (MessageBox.Show("Te gusta la weaita." + "\n" + "Deja tranquilo al pobre pato wn o_o", "Yaaa...", MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.No)
+                {
+                    eg.Show();
+                }
+            }
+                
+            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
