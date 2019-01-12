@@ -15,6 +15,9 @@ namespace FreeMe
         
         //variables de control de flujo. Que los popup se ejecuten una sola vez.
         bool executed1, executed2, executed3, executed4, executed5;
+        bool disable;
+
+        // ruta del registro para iniciar con el arranque del sistema.
         RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
         public Form1()
@@ -40,7 +43,8 @@ namespace FreeMe
                 try
                 {
                     SoundPlayer sndPlayer = new SoundPlayer(FreeMe.Properties.Resources.ibelieve);
-                    sndPlayer.Play(); //Toca I Believe I can fly...
+                    if (!disable)
+                        sndPlayer.Play(); //Toca I Believe I can fly...
                 }
                 catch (Exception ex)
                 {
@@ -56,7 +60,8 @@ namespace FreeMe
             if (result.Hours == 1 && result.Minutes == 0 && result.Seconds == 0 && !executed2)
             {
                 notifyIcon1.BalloonTipText = "Ya queda poco :D";
-                notifyIcon1.ShowBalloonTip(1000);
+                if (!disable)
+                    notifyIcon1.ShowBalloonTip(1000);
                 executed2 = true;
             }
 
@@ -64,7 +69,8 @@ namespace FreeMe
             if(result.Hours == 0 && result.Minutes == 15 && result.Seconds == 0 && !executed3)
             {
                 notifyIcon1.BalloonTipText = "Anda arreglando tus weaitas y apagando";
-                notifyIcon1.ShowBalloonTip(1000);
+                if (!disable)
+                    notifyIcon1.ShowBalloonTip(1000);
                 executed3 = true;
             }
 
@@ -107,9 +113,25 @@ namespace FreeMe
             eg.Show();
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Guarda la opción de deshabilitar al momento de salir de la aplicación.
+            Properties.Settings.Default.cbDisabled = cbDisable.Checked;
+            Properties.Settings.Default.Save();
+
+        }
+
+        private void cbDisable_CheckedChanged(object sender, EventArgs e)
+        {
+            disable = cbDisable.Checked;
+        }
+
         //Al momento de cargar la ventana principal del programa:
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Revisar si estaba tickeado el checkbox de deshabilitar.
+            cbDisable.Checked = Properties.Settings.Default.cbDisabled;
+
             //Revisa si está el registro de iniciar con el sistema
             if (reg.GetValue("FreeMe") == null)
             {
@@ -131,7 +153,8 @@ namespace FreeMe
             try
             {
                 SoundPlayer sndPlayer = new SoundPlayer(FreeMe.Properties.Resources.hellodark);
-                sndPlayer.Play(); //Toca Hello Darkness my old friend...
+                if (!disable)
+                    sndPlayer.Play(); //Toca Hello Darkness my old friend...
             }
             catch (Exception ex)
             {
@@ -156,7 +179,8 @@ namespace FreeMe
                 //Si se trata de un minimizado oculta la ventana en la barra de sistema. 
                 Hide();
                 notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(1000);
+                if (!disable)
+                    notifyIcon1.ShowBalloonTip(1000);
             }
             else if(FormWindowState.Normal == WindowState)
             {

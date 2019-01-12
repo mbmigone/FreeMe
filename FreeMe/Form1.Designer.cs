@@ -39,6 +39,7 @@
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbAutoRun = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.cbDisable = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,18 +114,30 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Help;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(239, 264);
+            this.button1.Location = new System.Drawing.Point(243, 291);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(10, 10);
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // cbDisable
+            // 
+            this.cbDisable.AutoSize = true;
+            this.cbDisable.Location = new System.Drawing.Point(12, 278);
+            this.cbDisable.Name = "cbDisable";
+            this.cbDisable.Size = new System.Drawing.Size(78, 17);
+            this.cbDisable.TabIndex = 5;
+            this.cbDisable.Text = "Modo piola";
+            this.cbDisable.UseVisualStyleBackColor = true;
+            this.cbDisable.CheckedChanged += new System.EventHandler(this.cbDisable_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 286);
+            this.ClientSize = new System.Drawing.Size(260, 307);
+            this.Controls.Add(this.cbDisable);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbAutoRun);
             this.Controls.Add(this.lbMensaje);
@@ -134,7 +147,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "FreeMe v1.0";
+            this.Text = "FreeMe v1.2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -154,6 +168,7 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
         private System.Windows.Forms.CheckBox cbAutoRun;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox cbDisable;
     }
 }
 
