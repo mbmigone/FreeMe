@@ -37,6 +37,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbAutoRun = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,11 +96,37 @@
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
             // 
+            // cbAutoRun
+            // 
+            this.cbAutoRun.AutoSize = true;
+            this.cbAutoRun.Location = new System.Drawing.Point(12, 257);
+            this.cbAutoRun.Name = "cbAutoRun";
+            this.cbAutoRun.Size = new System.Drawing.Size(104, 17);
+            this.cbAutoRun.TabIndex = 3;
+            this.cbAutoRun.Text = "Arrancar al inicio";
+            this.cbAutoRun.UseVisualStyleBackColor = true;
+            this.cbAutoRun.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbAutoRun_MouseClick);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Help;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(239, 266);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(10, 10);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 227);
+            this.ClientSize = new System.Drawing.Size(260, 286);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cbAutoRun);
             this.Controls.Add(this.lbMensaje);
             this.Controls.Add(this.lbRemain);
             this.Controls.Add(this.lbHead);
@@ -124,6 +152,8 @@
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
+        private System.Windows.Forms.CheckBox cbAutoRun;
+        private System.Windows.Forms.Button button1;
     }
 }
 

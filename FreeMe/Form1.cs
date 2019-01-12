@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
+using Microsoft.Win32;
 
 namespace FreeMe
 {
@@ -13,7 +14,8 @@ namespace FreeMe
             "https://github.com/mbmigone/FreeMe";
         
         //variables de control de flujo. Que los popup se ejecuten una sola vez.
-        bool executed1, executed2, executed3, executed4, executed5; 
+        bool executed1, executed2, executed3, executed4, executed5;
+        RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
         public Form1()
         {
@@ -85,9 +87,39 @@ namespace FreeMe
             }
         }
 
+      private void cbAutoRun_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (cbAutoRun.Checked)
+            {
+                reg.SetValue("FreeMe", Application.ExecutablePath.ToString());
+                MessageBox.Show("Se iniciará al arrancar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                reg.DeleteValue("FreeMe", false);
+                MessageBox.Show("Si querí no ma...", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EasterEgg1 eg = new EasterEgg1();
+            eg.Show();
+        }
+
         //Al momento de cargar la ventana principal del programa:
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Revisa si está el registro de iniciar con el sistema
+            if (reg.GetValue("FreeMe") == null)
+            {
+                cbAutoRun.Checked = false;
+            }
+            else
+            {
+                cbAutoRun.Checked = true;
+            }
+
             //Inicia el timer.
             timer.Start();
            

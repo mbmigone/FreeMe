@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EasterEgg1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EasterEgg1.Designer.cs">
+      <DependentUpon>EasterEgg1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EasterEgg1.resx">
+      <DependentUpon>EasterEgg1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\hellodark.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jlVWlMX.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quack-sound-effect.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

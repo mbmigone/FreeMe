@@ -71,6 +71,16 @@ namespace FreeMe.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cuac {
+            get {
+                object obj = ResourceManager.GetObject("cuac", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream hellodark {
@@ -85,6 +95,15 @@ namespace FreeMe.Properties {
         internal static System.IO.UnmanagedMemoryStream ibelieve {
             get {
                 return ResourceManager.GetStream("ibelieve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream quack {
+            get {
+                return ResourceManager.GetStream("quack", resourceCulture);
             }
         }
     }
