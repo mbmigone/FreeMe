@@ -14,9 +14,13 @@ namespace FreeMe
             "https://github.com/mbmigone/FreeMe";
         
         //variables de control de flujo. Que los popup se ejecuten una sola vez.
-        bool executed1, executed2, executed3, executed4, executed5;
+        bool executed1, executed2, executed3, executed4, executed5, executed6;
         bool disable;
         int egcount;
+        public int recHoras, recMinutos;
+        public string recMensaje;
+
+        
 
         // ruta del registro para iniciar con el arranque del sistema.
         RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
@@ -32,6 +36,9 @@ namespace FreeMe
             DateTime hoy = DateTime.Now; //La fecha/hora actuales
             TimeSpan ahora = hoy.TimeOfDay; //La hora actual
             TimeSpan result = Span - ahora; // Hora de salida - Hora actual = Tiempo restante para irse
+            
+            
+
 
             lbRemain.Text = result.ToString(@"h\:mm\:ss"); //result se convierte a String para mostrarlo en el Form1
 
@@ -92,9 +99,16 @@ namespace FreeMe
                 lbMensaje.Text = "Todavia por acá? en serio? -_-";
                 executed5 = true;
             }
+
+            if (ahora.Hours == recHoras && ahora.Minutes == recMinutos && !executed6)
+            {
+                executed6 = true;
+                MessageBox.Show("Me pediste que te recuerde que:\n\n" + recMensaje, "Recordatorio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                button2.BackColor = SystemColors.Control;
+            }
         }
 
-      private void cbAutoRun_MouseClick(object sender, MouseEventArgs e)
+        private void cbAutoRun_MouseClick(object sender, MouseEventArgs e)
         {
             if (cbAutoRun.Checked)
             {
@@ -140,9 +154,28 @@ namespace FreeMe
             disable = cbDisable.Checked;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Reminders rem = new Reminders();
+
+            rem.remMensaje = recMensaje;
+            rem.remHora = recHoras;
+            rem.remMinutos = recMinutos;
+
+            if(rem.ShowDialog() == DialogResult.OK)
+            {
+                recMensaje = rem.remMensaje;
+                recHoras = rem.remHora;
+                recMinutos = rem.remMinutos;
+                button2.BackColor = Color.LightGreen;
+                executed6 = false;
+            }
+        }
+
         //Al momento de cargar la ventana principal del programa:
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             // Revisar si estaba tickeado el checkbox de deshabilitar.
             cbDisable.Checked = Properties.Settings.Default.cbDisabled;
 
@@ -174,6 +207,8 @@ namespace FreeMe
             {
                 MessageBox.Show("Error message - " + ex.Message);
             }
+
+            
         }
 
         //Doble clic en el icono de sistema
