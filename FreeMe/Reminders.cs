@@ -10,7 +10,7 @@ namespace FreeMe
             InitializeComponent();
         }
 
-        //Variables públicas para el traspaso de los valores del recordatorio.
+        // Variables públicas para el traspaso de los valores del recordatorio.
         public int remHora, remMinutos;
         public string remMensaje;
 
