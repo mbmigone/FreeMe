@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.lbHead = new System.Windows.Forms.Label();
             this.lbRemain = new System.Windows.Forms.Label();
             this.lbMensaje = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
@@ -41,22 +40,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cbDisable = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.gbRestante = new System.Windows.Forms.GroupBox();
             this.contextMenuStrip1.SuspendLayout();
+            this.gbRestante.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lbHead
-            // 
-            this.lbHead.AutoSize = true;
-            this.lbHead.Location = new System.Drawing.Point(12, 9);
-            this.lbHead.Name = "lbHead";
-            this.lbHead.Size = new System.Drawing.Size(74, 13);
-            this.lbHead.TabIndex = 0;
-            this.lbHead.Text = "Todavía falta:";
             // 
             // lbRemain
             // 
             this.lbRemain.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRemain.Location = new System.Drawing.Point(12, 22);
+            this.lbRemain.Location = new System.Drawing.Point(6, 16);
             this.lbRemain.Name = "lbRemain";
             this.lbRemain.Size = new System.Drawing.Size(236, 63);
             this.lbRemain.TabIndex = 1;
@@ -66,9 +58,9 @@
             // 
             this.lbMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMensaje.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbMensaje.Location = new System.Drawing.Point(12, 85);
+            this.lbMensaje.Location = new System.Drawing.Point(12, 103);
             this.lbMensaje.Name = "lbMensaje";
-            this.lbMensaje.Size = new System.Drawing.Size(237, 133);
+            this.lbMensaje.Size = new System.Drawing.Size(249, 139);
             this.lbMensaje.TabIndex = 2;
             this.lbMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -115,7 +107,7 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Help;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(239, 9);
+            this.button1.Location = new System.Drawing.Point(250, 245);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(10, 10);
             this.button1.TabIndex = 4;
@@ -136,26 +128,35 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(174, 278);
+            this.button2.Location = new System.Drawing.Point(180, 272);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(81, 23);
             this.button2.TabIndex = 6;
-            this.button2.Text = "Avísame";
+            this.button2.Text = "Recordatorio";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // gbRestante
+            // 
+            this.gbRestante.Controls.Add(this.lbRemain);
+            this.gbRestante.Location = new System.Drawing.Point(12, 12);
+            this.gbRestante.Name = "gbRestante";
+            this.gbRestante.Size = new System.Drawing.Size(249, 88);
+            this.gbRestante.TabIndex = 7;
+            this.gbRestante.TabStop = false;
+            this.gbRestante.Text = "Todavía falta:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 307);
+            this.ClientSize = new System.Drawing.Size(272, 307);
+            this.Controls.Add(this.gbRestante);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cbDisable);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbAutoRun);
             this.Controls.Add(this.lbMensaje);
-            this.Controls.Add(this.lbRemain);
-            this.Controls.Add(this.lbHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -165,14 +166,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.gbRestante.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lbHead;
         private System.Windows.Forms.Label lbRemain;
         private System.Windows.Forms.Label lbMensaje;
         private System.Windows.Forms.Timer timer;
@@ -183,6 +183,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox cbDisable;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox gbRestante;
     }
 }
 

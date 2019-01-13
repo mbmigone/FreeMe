@@ -15,9 +15,11 @@ namespace FreeMe
         
         //variables de control de flujo. Que los popup se ejecuten una sola vez.
         bool executed1, executed2, executed3, executed4, executed5, executed6;
-        bool disable;
-        int egcount;
-        public int recHoras, recMinutos;
+        bool disable; // Para deshabilitar los mensajes y sonidos: modo piola.
+        int egcount; //Conteo de acceso al eg.
+        
+        //Variables del Form1 que se mapean con las del form Reminders
+        public int recHoras, recMinutos; 
         public string recMensaje;
 
         
@@ -37,9 +39,6 @@ namespace FreeMe
             TimeSpan ahora = hoy.TimeOfDay; //La hora actual
             TimeSpan result = Span - ahora; // Hora de salida - Hora actual = Tiempo restante para irse
             
-            
-
-
             lbRemain.Text = result.ToString(@"h\:mm\:ss"); //result se convierte a String para mostrarlo en el Form1
 
             // Tooltip del icono de la barra de sistema. Mouse Hover muestra el tiempo restante sin abrir el programa.
@@ -85,7 +84,7 @@ namespace FreeMe
             //Despues de pasada la hora de salida se muestra el tiempo adicional que se ha estado.
             if (ahora.Hours >= 18 && ahora.Minutes >= 15 && !executed4)
             {
-                lbHead.Text = "Tiempo adicional en la oficina:";
+                gbRestante.Text = "Tiempo adicional en la oficina:";
                 lbRemain.ForeColor = Color.DarkRed;
                 lbMensaje.Text = "Qué estai haciendo acá todavia? FUERA";
                 executed4 = true;
@@ -94,16 +93,23 @@ namespace FreeMe
             //Despues de pasada la hora de salida se muestra el tiempo adicional que se ha estado.
             if (ahora.Hours >= 20 && ahora.Minutes >= 00 && !executed5)
             {
-                lbHead.Text = "Tiempo adicional en la oficina:";
+                gbRestante.Text = "Tiempo adicional en la oficina:";
                 lbRemain.ForeColor = Color.DarkRed;
                 lbMensaje.Text = "Todavia por acá? en serio? -_-";
                 executed5 = true;
             }
 
+            //Se muestra el recordatorio creado en el form Reminders.
             if (ahora.Hours == recHoras && ahora.Minutes == recMinutos && !executed6)
             {
                 executed6 = true;
-                MessageBox.Show("Me pediste que te recuerde que:\n\n" + recMensaje, "Recordatorio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    "Me pediste que te recuerde que:\n\n" + recMensaje,
+                    "Recordatorio",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                //Reestablece el color del botón luego de mostrar el recordatorio.
                 button2.BackColor = SystemColors.Control;
             }
         }
@@ -156,18 +162,22 @@ namespace FreeMe
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Reminders rem = new Reminders();
+            Reminders rem = new Reminders(); //Nueva instancia de Reminders.
 
+            //Carga de los valores de recordatorio hacia el form Reminders.
             rem.remMensaje = recMensaje;
             rem.remHora = recHoras;
             rem.remMinutos = recMinutos;
 
+            //Se trae los valores del form Reminders hacia el Form1.
             if(rem.ShowDialog() == DialogResult.OK)
             {
                 recMensaje = rem.remMensaje;
                 recHoras = rem.remHora;
                 recMinutos = rem.remMinutos;
-                button2.BackColor = Color.LightGreen;
+
+                //Cambia el color del botón a verde si hay un recordatorio pendiente.
+                button2.BackColor = Color.LightGreen; 
                 executed6 = false;
             }
         }

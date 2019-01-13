@@ -86,7 +86,7 @@
             this.btAvisame.Name = "btAvisame";
             this.btAvisame.Size = new System.Drawing.Size(75, 23);
             this.btAvisame.TabIndex = 4;
-            this.btAvisame.Text = "Avísame";
+            this.btAvisame.Text = "Avisame";
             this.btAvisame.UseVisualStyleBackColor = true;
             this.btAvisame.Click += new System.EventHandler(this.btAvisame_Click);
             // 
