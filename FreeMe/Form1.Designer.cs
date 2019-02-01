@@ -40,7 +40,9 @@
             this.cbDisable = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.gbRestante = new System.Windows.Forms.GroupBox();
+            this.lbDayOfweek = new System.Windows.Forms.Label();
             this.circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.gbRestante.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +50,7 @@
             // lbMensaje
             // 
             this.lbMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMensaje.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbMensaje.ForeColor = System.Drawing.Color.Red;
             this.lbMensaje.Location = new System.Drawing.Point(12, 197);
             this.lbMensaje.Name = "lbMensaje";
             this.lbMensaje.Size = new System.Drawing.Size(245, 139);
@@ -84,11 +86,13 @@
             // cbAutoRun
             // 
             this.cbAutoRun.AutoSize = true;
+            this.cbAutoRun.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.cbAutoRun.Location = new System.Drawing.Point(12, 351);
             this.cbAutoRun.Name = "cbAutoRun";
             this.cbAutoRun.Size = new System.Drawing.Size(104, 17);
             this.cbAutoRun.TabIndex = 3;
             this.cbAutoRun.Text = "Arrancar al inicio";
+            this.toolTip.SetToolTip(this.cbAutoRun, "Por si quieres que se ejecute con el arranque del PC.");
             this.cbAutoRun.UseVisualStyleBackColor = true;
             this.cbAutoRun.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbAutoRun_MouseClick);
             // 
@@ -98,7 +102,7 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(82, 106);
+            this.button1.Location = new System.Drawing.Point(80, 106);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 1);
             this.button1.TabIndex = 4;
@@ -108,35 +112,54 @@
             // cbDisable
             // 
             this.cbDisable.AutoSize = true;
+            this.cbDisable.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.cbDisable.Location = new System.Drawing.Point(12, 372);
             this.cbDisable.Name = "cbDisable";
             this.cbDisable.Size = new System.Drawing.Size(78, 17);
             this.cbDisable.TabIndex = 5;
             this.cbDisable.Text = "Modo piola";
+            this.toolTip.SetToolTip(this.cbDisable, "¿Aburrido de los ruiditos, notificaciones y esas cosas? \r\nApágalas po.");
             this.cbDisable.UseVisualStyleBackColor = true;
             this.cbDisable.CheckedChanged += new System.EventHandler(this.cbDisable_CheckedChanged);
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.Control;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.button2.Location = new System.Drawing.Point(180, 366);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(81, 23);
             this.button2.TabIndex = 6;
             this.button2.Text = "Recordatorio";
+            this.toolTip.SetToolTip(this.button2, "¿Necesitas que te recuerde algo?");
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // gbRestante
             // 
+            this.gbRestante.Controls.Add(this.lbDayOfweek);
             this.gbRestante.Controls.Add(this.button1);
             this.gbRestante.Controls.Add(this.circularProgressBar);
+            this.gbRestante.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.gbRestante.Location = new System.Drawing.Point(12, 12);
             this.gbRestante.Name = "gbRestante";
             this.gbRestante.Size = new System.Drawing.Size(245, 182);
             this.gbRestante.TabIndex = 7;
             this.gbRestante.TabStop = false;
             this.gbRestante.Text = "Todavía falta:";
+            // 
+            // lbDayOfweek
+            // 
+            this.lbDayOfweek.AutoSize = true;
+            this.lbDayOfweek.BackColor = System.Drawing.Color.SlateGray;
+            this.lbDayOfweek.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lbDayOfweek.Location = new System.Drawing.Point(99, 113);
+            this.lbDayOfweek.Name = "lbDayOfweek";
+            this.lbDayOfweek.Size = new System.Drawing.Size(0, 13);
+            this.lbDayOfweek.TabIndex = 8;
+            this.lbDayOfweek.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // circularProgressBar
             // 
@@ -148,7 +171,7 @@
             this.circularProgressBar.InnerColor = System.Drawing.Color.SlateGray;
             this.circularProgressBar.InnerMargin = 2;
             this.circularProgressBar.InnerWidth = -1;
-            this.circularProgressBar.Location = new System.Drawing.Point(32, 8);
+            this.circularProgressBar.Location = new System.Drawing.Point(37, 13);
             this.circularProgressBar.MarqueeAnimationSpeed = 5000;
             this.circularProgressBar.Maximum = 43200;
             this.circularProgressBar.Name = "circularProgressBar";
@@ -158,7 +181,7 @@
             this.circularProgressBar.ProgressColor = System.Drawing.Color.LimeGreen;
             this.circularProgressBar.ProgressWidth = 15;
             this.circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.circularProgressBar.Size = new System.Drawing.Size(170, 170);
+            this.circularProgressBar.Size = new System.Drawing.Size(160, 160);
             this.circularProgressBar.StartAngle = 270;
             this.circularProgressBar.Step = 1000;
             this.circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
@@ -176,6 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(269, 397);
             this.Controls.Add(this.gbRestante);
             this.Controls.Add(this.button2);
@@ -192,6 +216,7 @@
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             this.gbRestante.ResumeLayout(false);
+            this.gbRestante.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,6 +234,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox gbRestante;
         private CircularProgressBar.CircularProgressBar circularProgressBar;
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Label lbDayOfweek;
     }
 }
 

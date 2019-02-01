@@ -19,7 +19,7 @@ namespace FreeMe
         int egcount; //Conteo de acceso al eg.
         
         //Variables del Form1 que se mapean con las del form Reminders
-        public int recHoras, recMinutos; 
+        public int recHoras, recMinutos, dayOfWeekInt; 
         public string recMensaje;
 
         
@@ -58,11 +58,14 @@ namespace FreeMe
                 circularProgressBar.ProgressColor = Color.Crimson;
                 circularProgressBar.Value = -1*resultInt;
             }
-            
-            circularProgressBar.Text = result.ToString(@"h\:mm\:ss");
-            
 
             //lbRemain.Text = result.ToString(@"h\:mm\:ss"); //result se convierte a String para mostrarlo en el Form1
+            circularProgressBar.Text = result.ToString(@"h\:mm\:ss");
+
+            lbDayOfweek.Text = hoy.DayOfWeek.ToString();
+
+            dayOfWeekInt = (int)hoy.DayOfWeek;
+
 
             // Tooltip del icono de la barra de sistema. Mouse Hover muestra el tiempo restante sin abrir el programa.
             notifyIcon1.Text = "FreeMe: " + circularProgressBar.Text;
@@ -72,16 +75,27 @@ namespace FreeMe
             {
                 try
                 {
-                    SoundPlayer sndPlayer = new SoundPlayer(FreeMe.Properties.Resources.ibelieve);
-                    if (!disable)
-                        sndPlayer.Play(); //Toca I Believe I can fly...
+                    if(dayOfWeekInt != 5)
+                    {
+                        SoundPlayer sndPlayer = new SoundPlayer(FreeMe.Properties.Resources.ibelieve);
+                        if (!disable)
+                            sndPlayer.Play(); //Toca I Believe I can fly...
+                    }
+                    else
+                    {
+                        SoundPlayer sndPlayer = new SoundPlayer(FreeMe.Properties.Resources.sweet);
+                        if (!disable)
+                            sndPlayer.Play(); //Toca I Believe I can fly...
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error message - " + ex.Message); //por si acaso no mas.
                 }
+
                 //Trae la ventana del programa al frente
-                Show();
+                this.TopMost = true;
+                this.Show();
                 WindowState = FormWindowState.Normal;
                 executed1 = true;
             }
@@ -108,7 +122,14 @@ namespace FreeMe
             if (ahora.Hours >= 18 && ahora.Minutes >= 15 && !executed4)
             {
                 gbRestante.Text = "Tiempo adicional en la oficina:";
-                lbMensaje.Text = "Qué estai haciendo acá todavia? FUERA";
+                if (dayOfWeekInt != 5)
+                {
+                    lbMensaje.Text = "Qué estai haciendo acá todavia? FUERA";
+                }
+                else
+                {
+                    lbMensaje.Text = "¡¡ ES VIERNES !!\nLARGO DE AQUÍ";
+                }
                 executed4 = true;
             }
 
@@ -128,10 +149,13 @@ namespace FreeMe
                     "Me pediste que te recuerde que:\n\n" + recMensaje,
                     "Recordatorio",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly);
 
                 //Reestablece el color del botón luego de mostrar el recordatorio.
-                button2.BackColor = SystemColors.Control;
+                button2.BackColor = Color.FromArgb(100, 100, 100);
+                button2.ForeColor = SystemColors.ControlLight;
             }
         }
 
@@ -198,7 +222,8 @@ namespace FreeMe
                 recMinutos = rem.remMinutos;
 
                 //Cambia el color del botón a verde si hay un recordatorio pendiente.
-                button2.BackColor = Color.LightGreen; 
+                button2.BackColor = Color.LightGreen;
+                button2.ForeColor = SystemColors.ControlDarkDark;
                 executed6 = false;
             }
         }

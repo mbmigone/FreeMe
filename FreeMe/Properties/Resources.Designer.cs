@@ -106,5 +106,14 @@ namespace FreeMe.Properties {
                 return ResourceManager.GetStream("quack", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream sweet {
+            get {
+                return ResourceManager.GetStream("sweet", resourceCulture);
+            }
+        }
     }
 }
