@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.lbRemain = new System.Windows.Forms.Label();
             this.lbMensaje = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
@@ -41,26 +40,18 @@
             this.cbDisable = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.gbRestante = new System.Windows.Forms.GroupBox();
+            this.circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.contextMenuStrip1.SuspendLayout();
             this.gbRestante.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lbRemain
-            // 
-            this.lbRemain.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRemain.Location = new System.Drawing.Point(6, 16);
-            this.lbRemain.Name = "lbRemain";
-            this.lbRemain.Size = new System.Drawing.Size(236, 63);
-            this.lbRemain.TabIndex = 1;
-            this.lbRemain.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbMensaje
             // 
             this.lbMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMensaje.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbMensaje.Location = new System.Drawing.Point(12, 103);
+            this.lbMensaje.Location = new System.Drawing.Point(12, 197);
             this.lbMensaje.Name = "lbMensaje";
-            this.lbMensaje.Size = new System.Drawing.Size(249, 139);
+            this.lbMensaje.Size = new System.Drawing.Size(245, 139);
             this.lbMensaje.TabIndex = 2;
             this.lbMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -93,7 +84,7 @@
             // cbAutoRun
             // 
             this.cbAutoRun.AutoSize = true;
-            this.cbAutoRun.Location = new System.Drawing.Point(12, 257);
+            this.cbAutoRun.Location = new System.Drawing.Point(12, 351);
             this.cbAutoRun.Name = "cbAutoRun";
             this.cbAutoRun.Size = new System.Drawing.Size(104, 17);
             this.cbAutoRun.TabIndex = 3;
@@ -103,13 +94,13 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Help;
+            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(250, 245);
+            this.button1.Location = new System.Drawing.Point(82, 106);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(10, 10);
+            this.button1.Size = new System.Drawing.Size(75, 1);
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -117,7 +108,7 @@
             // cbDisable
             // 
             this.cbDisable.AutoSize = true;
-            this.cbDisable.Location = new System.Drawing.Point(12, 278);
+            this.cbDisable.Location = new System.Drawing.Point(12, 372);
             this.cbDisable.Name = "cbDisable";
             this.cbDisable.Size = new System.Drawing.Size(78, 17);
             this.cbDisable.TabIndex = 5;
@@ -128,7 +119,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(180, 272);
+            this.button2.Location = new System.Drawing.Point(180, 366);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(81, 23);
             this.button2.TabIndex = 6;
@@ -138,30 +129,63 @@
             // 
             // gbRestante
             // 
-            this.gbRestante.Controls.Add(this.lbRemain);
+            this.gbRestante.Controls.Add(this.button1);
+            this.gbRestante.Controls.Add(this.circularProgressBar);
             this.gbRestante.Location = new System.Drawing.Point(12, 12);
             this.gbRestante.Name = "gbRestante";
-            this.gbRestante.Size = new System.Drawing.Size(249, 88);
+            this.gbRestante.Size = new System.Drawing.Size(245, 182);
             this.gbRestante.TabIndex = 7;
             this.gbRestante.TabStop = false;
             this.gbRestante.Text = "Todavía falta:";
+            // 
+            // circularProgressBar
+            // 
+            this.circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.circularProgressBar.AnimationSpeed = 5000;
+            this.circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.circularProgressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.circularProgressBar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.circularProgressBar.InnerColor = System.Drawing.Color.SlateGray;
+            this.circularProgressBar.InnerMargin = 2;
+            this.circularProgressBar.InnerWidth = -1;
+            this.circularProgressBar.Location = new System.Drawing.Point(44, 19);
+            this.circularProgressBar.MarqueeAnimationSpeed = 5000;
+            this.circularProgressBar.Maximum = 43200;
+            this.circularProgressBar.Name = "circularProgressBar";
+            this.circularProgressBar.OuterColor = System.Drawing.Color.DimGray;
+            this.circularProgressBar.OuterMargin = -25;
+            this.circularProgressBar.OuterWidth = 26;
+            this.circularProgressBar.ProgressColor = System.Drawing.Color.LimeGreen;
+            this.circularProgressBar.ProgressWidth = 15;
+            this.circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.circularProgressBar.Size = new System.Drawing.Size(150, 150);
+            this.circularProgressBar.StartAngle = 270;
+            this.circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(0);
+            this.circularProgressBar.SubscriptText = "";
+            this.circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(0);
+            this.circularProgressBar.SuperscriptText = "";
+            this.circularProgressBar.TabIndex = 8;
+            this.circularProgressBar.Text = "00:00:00";
+            this.circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.circularProgressBar.Value = 68;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 307);
+            this.ClientSize = new System.Drawing.Size(269, 397);
             this.Controls.Add(this.gbRestante);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cbDisable);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbAutoRun);
             this.Controls.Add(this.lbMensaje);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "FreeMe v1.2";
+            this.Text = "FreeMe v1.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
@@ -173,7 +197,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lbRemain;
         private System.Windows.Forms.Label lbMensaje;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
@@ -184,6 +207,7 @@
         private System.Windows.Forms.CheckBox cbDisable;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox gbRestante;
+        private CircularProgressBar.CircularProgressBar circularProgressBar;
     }
 }
 

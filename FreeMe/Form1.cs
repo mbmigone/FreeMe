@@ -17,6 +17,7 @@ namespace FreeMe
         bool executed1, executed2, executed3, executed4, executed5, executed6;
         bool disable; // Para deshabilitar los mensajes y sonidos: modo piola.
         int egcount; //Conteo de acceso al eg.
+        int speed = 10000;
         
         //Variables del Form1 que se mapean con las del form Reminders
         public int recHoras, recMinutos; 
@@ -38,11 +39,28 @@ namespace FreeMe
             DateTime hoy = DateTime.Now; //La fecha/hora actuales
             TimeSpan ahora = hoy.TimeOfDay; //La hora actual
             TimeSpan result = Span - ahora; // Hora de salida - Hora actual = Tiempo restante para irse
+            int resultInt;
+
+            resultInt = Convert.ToInt32(result.TotalSeconds);
+
+            if(resultInt >= 0)
+            {
+                circularProgressBar.ProgressColor = Color.LimeGreen;
+                circularProgressBar.Value = resultInt;
+            }
+            else
+            {
+                circularProgressBar.ProgressColor = Color.Crimson;
+                circularProgressBar.Value = -1*resultInt;
+            }
             
-            lbRemain.Text = result.ToString(@"h\:mm\:ss"); //result se convierte a String para mostrarlo en el Form1
+            circularProgressBar.Text = result.ToString(@"h\:mm\:ss");
+            
+
+            //lbRemain.Text = result.ToString(@"h\:mm\:ss"); //result se convierte a String para mostrarlo en el Form1
 
             // Tooltip del icono de la barra de sistema. Mouse Hover muestra el tiempo restante sin abrir el programa.
-            notifyIcon1.Text = "FreeMe: " + lbRemain.Text;
+            notifyIcon1.Text = "FreeMe: " + circularProgressBar.Text;
             
             //Si se llego a la hora de salida (Hora de salida - Hora actual = 0).
             if (result.Hours <= 0 && result.Minutes == 0 && result.Seconds == 0 && !executed1)
@@ -85,7 +103,6 @@ namespace FreeMe
             if (ahora.Hours >= 18 && ahora.Minutes >= 15 && !executed4)
             {
                 gbRestante.Text = "Tiempo adicional en la oficina:";
-                lbRemain.ForeColor = Color.DarkRed;
                 lbMensaje.Text = "Qué estai haciendo acá todavia? FUERA";
                 executed4 = true;
             }
@@ -94,7 +111,6 @@ namespace FreeMe
             if (ahora.Hours >= 20 && ahora.Minutes >= 00 && !executed5)
             {
                 gbRestante.Text = "Tiempo adicional en la oficina:";
-                lbRemain.ForeColor = Color.DarkRed;
                 lbMensaje.Text = "Todavia por acá? en serio? -_-";
                 executed5 = true;
             }
@@ -185,6 +201,7 @@ namespace FreeMe
         //Al momento de cargar la ventana principal del programa:
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             
             // Revisar si estaba tickeado el checkbox de deshabilitar.
             cbDisable.Checked = Properties.Settings.Default.cbDisabled;
