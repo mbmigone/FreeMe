@@ -9,15 +9,14 @@ namespace FreeMe
     
     public partial class Form1 : Form
     {
-        string ajá = "Así que decidiste crackerme? No me veas! D: " +
-            "Bueno, si llegaste hasta aquí el código fuente está en github " +
+        string ajá = "No se supone que estés leyendo esto" +
+            "Pero bueno, si llegaste hasta aquí el código fuente está en github " +
             "https://github.com/mbmigone/FreeMe";
         
         //variables de control de flujo. Que los popup se ejecuten una sola vez.
-        bool executed1, executed2, executed3, executed4, executed5, executed6;
+        bool executed1, executed2, executed3, executed4, executed5, executed6=true;
         bool disable; // Para deshabilitar los mensajes y sonidos: modo piola.
         int egcount; //Conteo de acceso al eg.
-        int speed = 10000;
         
         //Variables del Form1 que se mapean con las del form Reminders
         public int recHoras, recMinutos; 
@@ -42,6 +41,12 @@ namespace FreeMe
             int resultInt;
 
             resultInt = Convert.ToInt32(result.TotalSeconds);
+            if (resultInt > 43200)
+            {
+                resultInt = 43200;
+                circularProgressBar.PerformStep();
+            }
+                
 
             if(resultInt >= 0)
             {
@@ -201,8 +206,6 @@ namespace FreeMe
         //Al momento de cargar la ventana principal del programa:
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-            
             // Revisar si estaba tickeado el checkbox de deshabilitar.
             cbDisable.Checked = Properties.Settings.Default.cbDisabled;
 
@@ -234,8 +237,6 @@ namespace FreeMe
             {
                 MessageBox.Show("Error message - " + ex.Message);
             }
-
-            
         }
 
         //Doble clic en el icono de sistema

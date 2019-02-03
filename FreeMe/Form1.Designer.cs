@@ -148,7 +148,7 @@
             this.circularProgressBar.InnerColor = System.Drawing.Color.SlateGray;
             this.circularProgressBar.InnerMargin = 2;
             this.circularProgressBar.InnerWidth = -1;
-            this.circularProgressBar.Location = new System.Drawing.Point(44, 19);
+            this.circularProgressBar.Location = new System.Drawing.Point(32, 8);
             this.circularProgressBar.MarqueeAnimationSpeed = 5000;
             this.circularProgressBar.Maximum = 43200;
             this.circularProgressBar.Name = "circularProgressBar";
@@ -158,8 +158,9 @@
             this.circularProgressBar.ProgressColor = System.Drawing.Color.LimeGreen;
             this.circularProgressBar.ProgressWidth = 15;
             this.circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.circularProgressBar.Size = new System.Drawing.Size(150, 150);
+            this.circularProgressBar.Size = new System.Drawing.Size(170, 170);
             this.circularProgressBar.StartAngle = 270;
+            this.circularProgressBar.Step = 1000;
             this.circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
             this.circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(0);
             this.circularProgressBar.SubscriptText = "";
