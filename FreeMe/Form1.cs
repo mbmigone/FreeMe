@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
 using Microsoft.Win32;
+using System.Threading;
 
 namespace FreeMe
 {
@@ -62,7 +63,9 @@ namespace FreeMe
             //lbRemain.Text = result.ToString(@"h\:mm\:ss"); //result se convierte a String para mostrarlo en el Form1
             circularProgressBar.Text = result.ToString(@"h\:mm\:ss");
 
-            lbDayOfweek.Text = hoy.DayOfWeek.ToString();
+            var culture = Thread.CurrentThread.CurrentUICulture;
+            string dayOfWeek = culture.DateTimeFormat.GetDayName(hoy.DayOfWeek);
+            lbDayOfweek.Text = char.ToUpper(dayOfWeek[0]) + dayOfWeek.Substring(1);
 
             dayOfWeekInt = (int)hoy.DayOfWeek;
 
@@ -192,6 +195,7 @@ namespace FreeMe
             
         }
 
+        
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Guarda la opción de deshabilitar al momento de salir de la aplicación.
@@ -295,6 +299,12 @@ namespace FreeMe
         {
             //Clic derecho sobre el icono de sistema contiene una opción para cerrar el programa
             this.Close();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm about = new AboutForm();
+            about.Show();
         }
     }
 }

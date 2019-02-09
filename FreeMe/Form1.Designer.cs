@@ -35,6 +35,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbAutoRun = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.cbDisable = new System.Windows.Forms.CheckBox();
@@ -72,16 +73,24 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cerrarToolStripMenuItem});
+            this.cerrarToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(107, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(127, 48);
             // 
             // cerrarToolStripMenuItem
             // 
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.aboutToolStripMenuItem.Text = "Acerca de";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // cbAutoRun
             // 
@@ -152,12 +161,11 @@
             // 
             // lbDayOfweek
             // 
-            this.lbDayOfweek.AutoSize = true;
             this.lbDayOfweek.BackColor = System.Drawing.Color.SlateGray;
             this.lbDayOfweek.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbDayOfweek.Location = new System.Drawing.Point(99, 113);
+            this.lbDayOfweek.Location = new System.Drawing.Point(80, 110);
             this.lbDayOfweek.Name = "lbDayOfweek";
-            this.lbDayOfweek.Size = new System.Drawing.Size(0, 13);
+            this.lbDayOfweek.Size = new System.Drawing.Size(75, 18);
             this.lbDayOfweek.TabIndex = 8;
             this.lbDayOfweek.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -210,13 +218,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "FreeMe v1.3";
+            this.Text = "FreeMe v1.4";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             this.gbRestante.ResumeLayout(false);
-            this.gbRestante.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,6 +243,7 @@
         private CircularProgressBar.CircularProgressBar circularProgressBar;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label lbDayOfweek;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
